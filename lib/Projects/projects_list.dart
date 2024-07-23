@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:gtwm_project/models/project.dart';
-import 'package:gtwm_project/project_card.dart';
+import 'package:gtwm_project/Projects/project_card.dart';
 
 class ProjectsList extends StatelessWidget {
   ProjectsList({super.key, required this.projects});

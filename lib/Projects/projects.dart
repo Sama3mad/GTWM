@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:gtwm_project/appBar.dart';
 import 'package:gtwm_project/models/project.dart';
-import 'package:gtwm_project/projects_bottomsheet.dart';
-import 'package:gtwm_project/projects_list.dart';
+import 'package:gtwm_project/Projects/projects_bottomsheet.dart';
+import 'package:gtwm_project/Projects/projects_list.dart';
 import 'package:gtwm_project/styles/text_styles.dart';
 
 class Projects extends StatefulWidget {
@@ -54,65 +55,7 @@ class _ProjectsState extends State<Projects> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          toolbarHeight: 70,
-          leading: Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: Image(image: AssetImage('assets/gammal_tech_logo.png')),
-          ),
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              SizedBox(width: 5),
-              InkWell(
-                child: Text(
-                  'Projects',
-                  style: AppTextStyles.selectedMenuItem,
-                ),
-                onTap: () {
-                  print('tapped');
-                },
-              ),
-              SizedBox(width: 20),
-              InkWell(
-                child: Text(
-                  'Tasks',
-                  style: AppTextStyles.menuItem,
-                ),
-                onTap: () {
-                  print('tapped');
-                },
-              ),
-              SizedBox(width: 20),
-              InkWell(
-                child: Text(
-                  'Teams',
-                  style: AppTextStyles.menuItem,
-                ),
-                onTap: () {
-                  print('tapped');
-                },
-              ),
-            ],
-          ),
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.notifications,
-                size: 30,
-                color: Colors.white,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(right: 10),
-              child: CircleAvatar(
-                backgroundImage: AssetImage('assets/Sama.JPG'),
-              ),
-            ),
-          ],
-          backgroundColor: Color.fromARGB(255, 0, 128, 129),
-        ),
+        appBar: ProjectAppbar(),
         body: Padding(
           padding: const EdgeInsets.all(25.0),
           child: Column(
