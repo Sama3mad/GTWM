@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gtwm_project/models/project.dart';
+import 'package:gtwm_project/projects_bottomsheet.dart';
 import 'package:gtwm_project/projects_list.dart';
 import 'package:gtwm_project/styles/text_styles.dart';
 
-class Projects extends StatelessWidget {
+class Projects extends StatefulWidget {
   Projects({super.key});
 
+  @override
+  State<Projects> createState() => _ProjectsState();
+}
+
+class _ProjectsState extends State<Projects> {
   List<Project> currentProjects = [
     Project(
         title: 'First project',
@@ -34,6 +40,15 @@ class Projects extends StatelessWidget {
           Uri.parse('https://example.com/profile2.jpg'),
         ]),
   ];
+
+  void openOverlay() {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return ProjectsBottomsheet();
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -110,7 +125,7 @@ class Projects extends StatelessWidget {
                   ),
                   Spacer(),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: openOverlay,
                     child: Text(
                       'New project',
                       style: AppTextStyles.newProjectButton,
