@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gtwm_project/models/project.dart';
+import 'package:gtwm_project/status_layout.dart';
 import 'package:gtwm_project/styles/text_styles.dart';
 
 class ProjectCard extends StatelessWidget {
@@ -31,57 +32,7 @@ class ProjectCard extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              Row(
-                children: [
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: Text(
-                      'ongoing',
-                      style: TextStyle(color: Colors.black),
-                    ),
-                    style: ButtonStyle(
-                      elevation: WidgetStatePropertyAll(3),
-                      backgroundColor: WidgetStatePropertyAll(
-                          const Color.fromARGB(255, 186, 185, 185)),
-                      shape: WidgetStatePropertyAll(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.horizontal(
-                            left: Radius.circular(16),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: Text(
-                      'delayed',
-                      style: TextStyle(color: Colors.black),
-                    ),
-                    style: ButtonStyle(
-                      shape: WidgetStatePropertyAll(
-                        RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-                      ),
-                    ),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: Text(
-                      'done',
-                      style: TextStyle(color: Colors.black),
-                    ),
-                    style: ButtonStyle(
-                      shape: WidgetStatePropertyAll(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.horizontal(
-                            right: Radius.circular(16),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              StatusLayout(),
               SizedBox(
                 height: 20,
               ),

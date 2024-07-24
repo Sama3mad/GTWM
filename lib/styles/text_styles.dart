@@ -19,6 +19,10 @@ class AppTextStyles {
     fontWeight: FontWeight.bold,
     color: Colors.white,
   );
+  static TextStyle taskDescription = GoogleFonts.poppins(
+    fontSize: 12,
+    color: Colors.black,
+  );
 
   static TextStyle menuItem = GoogleFonts.poppins(
     fontSize: 15,

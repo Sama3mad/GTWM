@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:gtwm_project/appBar.dart';
 import 'package:gtwm_project/models/project.dart';
-import 'package:gtwm_project/Projects/projects_bottomsheet.dart';
 import 'package:gtwm_project/Projects/projects_list.dart';
 import 'package:gtwm_project/styles/text_styles.dart';
 
@@ -42,19 +40,12 @@ class _ProjectsState extends State<Projects> {
         ]),
   ];
 
-  void openOverlay() {
-    showModalBottomSheet(
-      context: context,
-      builder: (context) {
-        return ProjectsBottomsheet();
-      },
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.white,
         appBar: ProjectAppbar(),
         body: Padding(
           padding: const EdgeInsets.all(25.0),
@@ -68,7 +59,7 @@ class _ProjectsState extends State<Projects> {
                   ),
                   Spacer(),
                   TextButton(
-                    onPressed: openOverlay,
+                    onPressed: (){},
                     child: Text(
                       'New project',
                       style: AppTextStyles.newProjectButton,

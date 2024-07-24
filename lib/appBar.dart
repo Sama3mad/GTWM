@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gtwm_project/Projects/projects_bottomsheet.dart';
 import 'package:gtwm_project/styles/text_styles.dart';
 
 class ProjectAppbar extends StatelessWidget implements PreferredSizeWidget { // Implement PreferredSizeWidget
@@ -6,6 +7,17 @@ class ProjectAppbar extends StatelessWidget implements PreferredSizeWidget { // 
 
   @override
   Widget build(BuildContext context) {
+
+
+    void openOverlay() {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return ProjectsBottomsheet();
+      },
+    );
+  }
+  
     return AppBar(
       toolbarHeight: 70,
       leading: Padding(
@@ -49,7 +61,7 @@ class ProjectAppbar extends StatelessWidget implements PreferredSizeWidget { // 
       ),
       actions: [
         IconButton(
-          onPressed: () {},
+          onPressed: openOverlay,
           icon: Icon(
             Icons.notifications,
             size: 30,
@@ -70,3 +82,5 @@ class ProjectAppbar extends StatelessWidget implements PreferredSizeWidget { // 
   @override
   Size get preferredSize => Size.fromHeight(70); 
 }
+
+
