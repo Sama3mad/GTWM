@@ -2,22 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:gtwm_project/Projects/projects_bottomsheet.dart';
 import 'package:gtwm_project/styles/text_styles.dart';
 
-class ProjectAppbar extends StatelessWidget implements PreferredSizeWidget { // Implement PreferredSizeWidget
-  const ProjectAppbar({super.key});
+class ProjectAppbar extends StatefulWidget implements PreferredSizeWidget {
+  // Implement PreferredSizeWidget
+  ProjectAppbar({super.key});
+
+  @override
+  State<ProjectAppbar> createState() => _ProjectAppbarState();
+
+  @override
+  Size get preferredSize => Size.fromHeight(70);
+}
+
+class _ProjectAppbarState extends State<ProjectAppbar> {
+  String selectedMenuItem = 'Projects';
 
   @override
   Widget build(BuildContext context) {
-
-
+    
     void openOverlay() {
-    showModalBottomSheet(
-      context: context,
-      builder: (context) {
-        return ProjectsBottomsheet();
-      },
-    );
-  }
-  
+      showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          return ProjectsBottomsheet();
+        },
+      );
+    }
+
     return AppBar(
       toolbarHeight: 70,
       leading: Padding(
@@ -28,33 +38,56 @@ class ProjectAppbar extends StatelessWidget implements PreferredSizeWidget { // 
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           SizedBox(width: 5),
-          InkWell(
+          PopupMenuButton(
+            onOpened: (){
+              setState(() {
+                selectedMenuItem = 'projects';
+              });
+            },
+            itemBuilder: (context) {
+              return [
+                PopupMenuItem(child: Text('Board')),
+                PopupMenuItem(child: Text('Project details')),
+                PopupMenuItem(child: Text('Project settings')),
+                PopupMenuItem(child: Text('Project Report')),
+              ];
+            },
             child: Text(
               'Projects',
-              style: AppTextStyles.selectedMenuItem,
+              style: selectedMenuItem == 'projects' ? AppTextStyles.selectedMenuItem : AppTextStyles.menuItem,
             ),
-            onTap: () {
-              print('tapped');
-            },
           ),
+          // InkWell(
+          //   child: Text(
+          //     'Projects',
+          //     style: AppTextStyles.selectedMenuItem,
+          //   ),
+          //   onTap: () {
+          //     print('tapped');
+          //   },
+          // ),
           SizedBox(width: 20),
           InkWell(
             child: Text(
               'Tasks',
-              style: AppTextStyles.menuItem,
+              style: selectedMenuItem == 'Tasks' ? AppTextStyles.selectedMenuItem : AppTextStyles.menuItem,
             ),
             onTap: () {
-              print('tapped');
+              setState(() {
+                selectedMenuItem = 'Tasks';
+              });
             },
           ),
           SizedBox(width: 20),
           InkWell(
             child: Text(
               'Teams',
-              style: AppTextStyles.menuItem,
+              style: selectedMenuItem == 'Teams' ? AppTextStyles.selectedMenuItem : AppTextStyles.menuItem,
             ),
             onTap: () {
-              print('tapped');
+              setState(() {
+                selectedMenuItem = 'Teams';
+              });
             },
           ),
         ],
@@ -79,8 +112,5 @@ class ProjectAppbar extends StatelessWidget implements PreferredSizeWidget { // 
     );
   }
 
-  @override
-  Size get preferredSize => Size.fromHeight(70); 
+  
 }
-
-
