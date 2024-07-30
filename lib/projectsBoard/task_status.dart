@@ -19,10 +19,17 @@ class TaskStatus extends StatelessWidget {
             'To do',
             style: AppTextStyles.projectItem,
           ),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.add),
-            iconSize: 20,
+          SizedBox(
+            width: 10,
+          ),
+          PopupMenuButton(
+            itemBuilder: (context) {
+              return [
+                PopupMenuItem(child: Text('add to Ongoing tasks')),
+                PopupMenuItem(child: Text('add to finished tasks')),
+              ];
+            },
+            child: Icon(Icons.add),
           ),
         ],
       ),

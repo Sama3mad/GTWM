@@ -28,7 +28,23 @@ class ProjectsBoard extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            TaskCard(task: Task(title: 'title', status: 'status', deadline: DateTime.now(), membersList: [], assignedProject: 'assignedProject', startDate: DateTime.now(), taskDescription: 'taskDescription')),
+            TaskCard(
+                task: Task(
+                    title: 'title',
+                    status: 'status',
+                    deadline: DateTime.now(),
+                    membersList: [],
+                    assignedProject: 'assignedProject',
+                    startDate: DateTime.now(),
+                    taskDescription: 'taskDescription')),
+            Spacer(),
+            Row(
+              children: [
+                IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
+                Spacer(),
+                IconButton(onPressed: () {}, icon: Icon(Icons.arrow_forward)),
+              ],
+            )
           ],
         ),
       ),
