@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:gtwm_project/appBar.dart';
-import 'package:gtwm_project/models/task.dart';
+import 'package:gtwm_project/models/project.dart';
+import 'package:gtwm_project/models/subtask.dart';
 import 'package:gtwm_project/status_layout.dart';
 import 'package:gtwm_project/styles/text_styles.dart';
-import 'package:gtwm_project/subtasks/subtasks.dart';
 
-class TaskDetails extends StatelessWidget {
-  TaskDetails({super.key, required this.selectedTask});
-  Task selectedTask;
-
+class SubtaskDetails extends StatelessWidget {
+  SubtaskDetails({super.key, required this.selectedSubtask});
+  Subtask selectedSubtask;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,42 +16,13 @@ class TaskDetails extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(25.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                Text(
-                  selectedTask.title,
+            Text(
+                  selectedSubtask.title,
                   style: AppTextStyles.projectsTitle,
-                ),
-                Spacer(),
-                TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return Subtasks(
-                            taskName: selectedTask.title,
-                          );
-                        },
-                      ),
-                    );
-                  },
-                  child: Text(
-                    'view subtasks',
-                    style: AppTextStyles.newProjectButton,
-                  ),
-                  style: ButtonStyle(
-                    backgroundColor: WidgetStateProperty.all(
-                      Color.fromARGB(255, 255, 145, 76),
-                    ),
-                    foregroundColor: WidgetStateProperty.all(
-                      Colors.white,
-                    ),
-                  ),
-                ),
-              ],
             ),
+            
             SizedBox(
               height: 30,
             ),
@@ -62,16 +32,24 @@ class TaskDetails extends StatelessWidget {
             ),
             _buildDetailRow(
               icon: Icons.assignment,
-              label: 'task title: ',
-              value: selectedTask.title,
+              label: 'subtask title: ',
+              value: selectedSubtask.title,
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            _buildDetailRow(
+              icon: Icons.people,
+              label: 'assigned project ',
+              value: selectedSubtask.assignedProject,
             ),
             SizedBox(
               height: 10,
             ),
             _buildDetailRow(
               icon: Icons.person,
-              label: 'assigned project ',
-              value: selectedTask.assignedProject,
+              label: 'assigned member ',
+              value: selectedSubtask.member,
             ),
             SizedBox(
               height: 10,
@@ -94,14 +72,16 @@ class TaskDetails extends StatelessWidget {
             ),
             _buildDetailRow(
               icon: Icons.description,
-              label: 'task description: ',
-              value: selectedTask.taskDescription,
+              label: 'description: ',
+              value: selectedSubtask.taskDescription,
             ),
           ],
         ),
       ),
     );
   }
+}
+
 
   Widget _buildDetailRow({
     required IconData icon,
@@ -143,4 +123,3 @@ class TaskDetails extends StatelessWidget {
       ],
     );
   }
-}
